@@ -29,8 +29,8 @@ typedef struct BinarySearchTreeNode {
 BSTN* createNode(void);
 void insert2BST(BSTN **ptr2Root, BSTN *newNode);
 
-void inOrderTraversal(BSTN *currentNode, BSTN *ancestor);
-void preOrderTraversal(BSTN *currentNode, BSTN *ancestor);
+void inOrderTraversal(BSTN *currentNode, BSTN *possibleSuccessor);
+void preOrderTraversal(BSTN *currentNode, BSTN *possibleSuccessor);
 
 /******************************************************************************************************************************************/
 
@@ -163,7 +163,7 @@ void insert2BST(BSTN **ptr2Root, BSTN *newNode)
      return;
  }
 
-void inOrderTraversal(BSTN *currentNode, BSTN *ancestor)
+void inOrderTraversal(BSTN *currentNode, BSTN *possibleSuccessor)
 /*!
  * @function     inOrderTraversal
  * @abstract     Recursively in-order traverse a binary tree.
@@ -171,7 +171,7 @@ void inOrderTraversal(BSTN *currentNode, BSTN *ancestor)
  *               true successor to the current node.
  *
  * @param        currentNode    Any binary search tree node that is currently being visited.
- * @param        ancestor       A binary search tree node located above the currentNode.
+ * @param        possibleSuccessor       A binary search tree node located above the currentNode.
 */
  {
      if (currentNode->left != NULL)                         /* Slice left from currentNode. */
@@ -179,13 +179,13 @@ void inOrderTraversal(BSTN *currentNode, BSTN *ancestor)
 
      printf("%c", currentNode->keyValue);                   /* Print key after slicing left. */
 
-     if (currentNode->right != ancestor)                    /* Determine if the current node's right pointer points to it's successor. */
-         inOrderTraversal(currentNode->right, ancestor);    /* If not, traverse it's right child. */
+     if (currentNode->right != possibleSuccessor)                    /* Determine if the current node's right pointer points to it's successor. */
+         inOrderTraversal(currentNode->right, possibleSuccessor);    /* If not, traverse it's right child. */
 
      return;                                                /* Go back up a function and start over until traversal is complete. */
  }
 
-void preOrderTraversal(BSTN *currentNode, BSTN *ancestor)
+void preOrderTraversal(BSTN *currentNode, BSTN *possibleSuccessor)
 /*!
  * @function     preOrderTraversal
  * @abstract     Recursively pre-order traverse a binary tree.
@@ -193,7 +193,7 @@ void preOrderTraversal(BSTN *currentNode, BSTN *ancestor)
  *               true successor to the current node.
  *
  * @param        currentNode    Any binary search tree node that is currently being visited.
- * @param        ancestor       A binary search tree node located above the currentNode.
+ * @param        possibleSuccessor       A binary search tree node located above the currentNode.
 */
  {
      printf("%c", currentNode->keyValue);                   /* Print key before slicing left. */
@@ -201,8 +201,8 @@ void preOrderTraversal(BSTN *currentNode, BSTN *ancestor)
      if (currentNode->left != NULL)                         /* Slice left from currentNode. */
          preOrderTraversal(currentNode->left, currentNode);
 
-     if (currentNode->right != ancestor)                    /* Determine if the current node's right pointer points to it's successor. */
-         preOrderTraversal(currentNode->right, ancestor);   /* If not, traverse it's right child. */
+     if (currentNode->right != possibleSuccessor)                    /* Determine if the current node's right pointer points to it's successor. */
+         preOrderTraversal(currentNode->right, possibleSuccessor);   /* If not, traverse it's right child. */
 
      return;                                                /* Go back up a function and start over until traversal is complete. */
  }
