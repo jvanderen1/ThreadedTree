@@ -16,9 +16,9 @@
  * @struct       BinarySearchTreeNode
  * @abstract     Holds a key value, while pointing to it's left and right sides, in order to create a binary search tree.
  *
- * @field        left           Left side of binary search tree node.
- * @field        right          Right side of binary search tree node.
- * @field        keyValue       Character value representing a binary search tree node.
+ * @field        left                  Left side of binary search tree node.
+ * @field        right                 Right side of binary search tree node.
+ * @field        keyValue              Character value representing a binary search tree node.
 */
 typedef struct BinarySearchTreeNode {
     struct BinarySearchTreeNode *left, *right;
@@ -92,8 +92,8 @@ void insert2BST(BSTN **ptr2Root, BSTN *newNode)
  * @abstract     Insert a node in the correct spot in a binary search tree.
  * @discussion   An ancestor will point to a possible successor for a thread to point to.
  *
- * @param        ptr2Root       A pointer of a pointer to the root of a binary search tree.
- * @param        newNode        A newly created Binary Search Tree Node.
+ * @param        ptr2Root              A pointer of a pointer to the root of a binary search tree.
+ * @param        newNode               A newly created Binary Search Tree Node.
 */
  {
      BSTN *insPtr = *ptr2Root, *ancestor = *ptr2Root;
@@ -167,11 +167,11 @@ void inOrderTraversal(BSTN *currentNode, BSTN *possibleSuccessor)
 /*!
  * @function     inOrderTraversal
  * @abstract     Recursively in-order traverse a binary tree.
- * @discussion   An ancestor will point to a 'possible' successor for a thread to point to. Therefore, the ancestor will not always be the
- *               true successor to the current node.
+ * @discussion   A possible successor will always be an ancestor for a thread to point to. However, not all ancestors will be the true
+ *               successor to the current node.
  *
- * @param        currentNode    Any binary search tree node that is currently being visited.
- * @param        possibleSuccessor       A binary search tree node located above the currentNode.
+ * @param        currentNode           Any binary search tree node that is currently being visited.
+ * @param        possibleSuccessor     A binary search tree node located above the currentNode.
 */
  {
      if (currentNode->left != NULL)                         /* Slice left from currentNode. */
@@ -189,11 +189,11 @@ void preOrderTraversal(BSTN *currentNode, BSTN *possibleSuccessor)
 /*!
  * @function     preOrderTraversal
  * @abstract     Recursively pre-order traverse a binary tree.
- * @discussion   An ancestor will point to a 'possible' successor for a thread to point to. Therefore, the ancestor will not always be the
- *               true successor to the current node.
+ * @discussion   A possible successor will always be an ancestor for a thread to point to. However, not all ancestors will be the true
+ *               successor to the current node.
  *
- * @param        currentNode    Any binary search tree node that is currently being visited.
- * @param        possibleSuccessor       A binary search tree node located above the currentNode.
+ * @param        currentNode           Any binary search tree node that is currently being visited.
+ * @param        possibleSuccessor     A binary search tree node located above the currentNode.
 */
  {
      printf("%c", currentNode->keyValue);                   /* Print key before slicing left. */
